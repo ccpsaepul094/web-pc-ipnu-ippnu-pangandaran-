@@ -5,7 +5,7 @@
     <div class="container max-w-6xl mx-auto flex justify-between items-center py-4 px-4">
         <!-- Logo -->
         <div class="flex items-center space-x-3">
-            <img src="assets/image/ipnuippnu.png" alt="" class="h-10 w-10">
+            {{-- <img src="assets/image/ipnuippnu.png" alt="" class="h-10 w-10"> --}}
             <h1 class="text-xl font-bold text-black">pc ipnu ippnu pangandaran</h1>
         </div>
 
@@ -13,8 +13,33 @@
         <!-- Menu besar (desktop) -->
         <nav class="hidden md:flex space-x-6">
             <a href="#home" class="text-gray-700 hover:text-green-600">Home</a>
-            <a href="#visi" class="text-gray-700 hover:text-green-600">Visi misi</a>
-            <a href="#tentangKami" class="text-gray-700 hover:text-green-600">Tentang Kami</a>
+            <li class="relative group list-none">
+                <a class="text-gray-700 hover:text-green-600">
+                    Tentang Kami
+                </a>
+
+                <!-- Dropdown -->
+                <div
+                    class="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                    <a href="{{ route('company.home') }}#tentangKami"
+                        class="block px-4 py-3 hover:bg-gray-50 rounded-t-xl">
+                        Profile Singkat
+                    </a>
+                    <a href="{{ route('company.history') }}" class="block px-4 py-3 hover:bg-gray-50">
+                        Sejarah Berdiri
+                    </a>
+                    <a href="{{ route('company.home') }}#visi" class="block px-4 py-3 hover:bg-gray-50 rounded-b-xl">
+                        Visi Misi
+                    </a>
+                    <a href="#visi" class="block px-4 py-3 hover:bg-gray-50 rounded-t-xl">
+                        Struktur Organisasi
+                    </a>
+                    <a href="#misi" class="block px-4 py-3 hover:bg-gray-50">
+                        Kegiatan
+                    </a>
+                </div>
+            </li>
+
             <a href="#blog" class="text-gray-700 hover:text-green-600">Blog</a>
             <a href="#kontak" class="text-gray-700 hover:text-green-600">kontak</a>
         </nav>
@@ -38,7 +63,31 @@
     <nav x-show="open" class="md:hidden bg-white shadow-md px-4 py-2 space-y-2">
         <a href="#home" class="block text-gray-700 hover:text-green-600">Home</a>
         <a href="#visi" class="block text-gray-700 hover:text-green-600">Visi misi</a>
-        <a href="#tentangKami" class="block text-gray-700 hover:text-green-600">Tentang Kami</a>
+        <li class="relative group list-none">
+            <a class="text-gray-700 hover:text-green-600">
+                Tentang Kami
+            </a>
+
+            <!-- Dropdown -->
+            <div
+                class="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                <a href="{{ route('company.home') }}#tentangKami" class="block px-4 py-3 hover:bg-gray-50 rounded-t-xl">
+                    Profile Singkat
+                </a>
+                <a href="{{ route('company.history') }}" class="block px-4 py-3 hover:bg-gray-50">
+                    Sejarah Berdiri
+                </a>
+                <a href="{{ route('company.home') }}#visi" class="block px-4 py-3 hover:bg-gray-50 rounded-b-xl">
+                    Visi Misi
+                </a>
+                <a href="#visi" class="block px-4 py-3 hover:bg-gray-50 rounded-t-xl">
+                    Struktur Organisasi
+                </a>
+                <a href="#misi" class="block px-4 py-3 hover:bg-gray-50">
+                    Kegiatan
+                </a>
+            </div>
+        </li>
         <a href="#blog" class="block text-gray-700 hover:text-green-600">Blog</a>
         <a href="#kontak" class="block text-gray-700 hover:text-green-600">kontak</a>
     </nav>

@@ -1,33 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.layouts')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pc Ipnu Ippnu Pangandaran </title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome 6 CDN -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-
-
-    <link rel="icon" type="image/png" href="/assets/image/ipnuippnu.png" sizes="32x32">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-    </style>
-</head>
-
-<body class="bg-white text-gray-800">
-
-    <!-- Header -->
-    <x-header />
-
+@section('content')
     <!-- Home -->
     <section id="home" class="min-h-screen bg-white px-6 md:px-16 flex flex-col items-center justify-center ">
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
@@ -48,7 +21,8 @@
     </section>
 
     <!-- Visi -->
-    <section id="visi" class="bg-white min-h-screen flex flex-col py-16 px-6 items-center justify-center">
+    <section id="visi"
+        class="bg-white min-h-screen flex flex-col py-16 px-6 items-center justify-center border border-black">
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
             <div class="">
                 <h3 class="text-3xl font-semibold text-green-800 mb-10 text-center">Visi</h3>
@@ -227,84 +201,4 @@
             </div>
         </div>
     </section>
-
-
-    <!-- Footer -->
-
-
-    <footer class="bg-green-50">
-        <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-            <div class="md:flex md:justify-between">
-                <div class="mb-6 md:mb-0">
-                    <a href="#" class="flex items-center">
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap text-black">
-                            Pelajar NU Pangandaran
-                        </span>
-                    </a>
-                </div>
-                <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold text-black uppercase">Tentang</h2>
-                        <ul class="text-black font-medium">
-                            <li class="mb-4"><a href="#" class="hover:underline">Profil</a></li>
-                            <li><a href="#" class="hover:underline">Sejarah</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold text-black uppercase">Program</h2>
-                        <ul class="text-black font-medium">
-                            <li class="mb-4"><a href="#" class="hover:underline">Kegiatan</a></li>
-                            <li><a href="#" class="hover:underline">Artikel & Berita</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold text-black uppercase">Ikuti Kami</h2>
-                        <ul class="text-black font-medium">
-                            <li class="mb-4"><a href="#" class="hover:underline">Instagram</a></li>
-                            <li><a href="#" class="hover:underline">Facebook</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <hr class="my-6 border-gray-300 sm:mx-auto lg:my-8" />
-            <div class="sm:flex sm:items-center sm:justify-between">
-                <span class="text-sm text-black sm:text-center">
-                    © 2023 Pelajar NU Pangandaran. All Rights Reserved.
-                </span>
-                <div class="flex mt-4 sm:justify-center sm:mt-0">
-                    <!-- Facebook -->
-                    <a href="#" class="text-green-600 hover:text-green-800 ms-5">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
-                    {{-- instagra --}}
-                    <a href="#" class="text-green-600 hover:text-green-800 ms-5">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    {{-- youtube --}}
-                    <a href="#" class="text-green-600 hover:text-green-800 ms-5">
-                        <i class="fa-brands fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
-
-    <script>
-        new Typed("#typed", {
-            strings: [
-                "Bersama Membangun Masa Depan",
-                "Ayo Bergabung Bersama Pelajar NU Pangandaran",
-                "Bersama Membangun Masa Depan",
-                "Belajar & Berjuang"
-            ],
-            typeSpeed: 50,
-            backSpeed: 30,
-            startDelay: 500, // jeda 0.5 detik sebelum mulai
-            loop: true
-        });
-    </script>
-</body>
-
-</html>
+@endsection

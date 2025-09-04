@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompanyController;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [CompanyController::class, "index"])->name('company.home');
+Route::get('/history', [CompanyController::class, "history"])->name('company.history');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
