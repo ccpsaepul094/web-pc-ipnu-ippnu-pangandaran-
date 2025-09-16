@@ -11,7 +11,7 @@
 
 
         <!-- Menu besar (desktop) -->
-        <nav class="hidden md:flex space-x-6">
+        <nav class="hidden md:flex space-x-6 flex items-center">
             <a href="#home" class="text-gray-700 hover:text-green-600">Home</a>
             <li class="relative group list-none">
                 <a class="text-gray-700 hover:text-green-600">
@@ -42,7 +42,11 @@
 
             <a href="#blog" class="text-gray-700 hover:text-green-600">Blog</a>
             <a href="#kontak" class="text-gray-700 hover:text-green-600">kontak</a>
+
+            <a href="{{ route('login') }}"><button type="button"
+                    class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Login</button></a>
         </nav>
+
 
         <!-- Tombol hamburger (mobile) -->
         <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">

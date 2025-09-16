@@ -2,8 +2,8 @@
 
 @section('content')
     {{-- Section Sejarah --}}
-    <section class="min-h-screen flex ">
-        <div class="max-w-6xl w-full mx-auto p-8">
+    <section class="min-h-screen flex px-6 ">
+        <div class="max-w-6xl w-full mx-auto py-8">
             <h2 class="text-3xl font-bold mb-6 text-center text-green-600">
                 Sejarah Berdirinya PC IPNU IPPNU Pangandaran
             </h2>

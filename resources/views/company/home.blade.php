@@ -77,7 +77,6 @@
                         <li>Mencetak kader pelajar yang berakhlak, cerdas, dan berdaya saing</li>
                         <li>Menguatkan ukhuwah dan kepedulian sosial di kalangan pelajar</li>
                     </ul>
-
                 </div>
             </div>
             <div class="max-w-6xl pt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
