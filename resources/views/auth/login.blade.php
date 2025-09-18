@@ -1,11 +1,11 @@
 <x-guest-layout>
 
-    <div class="flex flex-col items-center justify-center w-full text-center">
-        <h1 class="text-center" style="font-size: 40px; font-weight: 800; color: #16a34a;">
+    <div class="flex flex-col items-center justify-center w-full text-center py-2">
+        <h1 class="text-center text-3xl font-medium text-green-500 ">
             Login
         </h1>
         <div class="text-center py-2 w-full">
-            <p class="text-gray-600">
+            <p class="text-gray-500 text-sm font-normal">
                 Silahkan masukkan email dan password Anda untuk masuk ke akun Anda.
             </p>
         </div>
@@ -19,15 +19,15 @@
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" class="text-gray-500 fo nt-bold pb-1" :value="__('Masukan Email Anda')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
                 required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        <div class="my-4">
+            <x-input-label for="password" class="pb-1 text-gray-500 font-normal" :value="__('Masukan Password Anda')" />
             <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
                 autocomplete="current-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />

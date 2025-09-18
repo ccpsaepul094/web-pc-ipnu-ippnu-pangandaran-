@@ -17,9 +17,8 @@
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-white">
-        <div
-            class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg flex flex-col justify-center">
+    <div class="min-h-screen flex items-center justify-center pt-6 sm:pt-0 bg-white border">
+        <div class="w-full m-6 px-6 py-4 border-black sm:max-w-md  bg-white shadow-xl overflow-hidden sm:rounded-lg">
             {{ $slot }}
         </div>
     </div>
