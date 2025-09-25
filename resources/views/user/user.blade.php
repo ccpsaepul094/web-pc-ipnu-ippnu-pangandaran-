@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body> 
     <h1>ini halaman admin </h1>
 
     @include('layouts.navigation')
