@@ -11,4 +11,9 @@ class AdminController extends Controller
         // Logic for the admin dashboard
         return view('admin.admin');
     }
+
+    public function user()
+    {
+        return view('user.dashboarduser');
+    }
 }

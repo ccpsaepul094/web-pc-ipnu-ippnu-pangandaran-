@@ -21,7 +21,7 @@ Route::middleware(['role:admin'])->group(function () {
 
 // route untuk user 
 Route::middleware(['role:user'])->group(function () {
-    Route::get('/user/blog', [AdminController::class, 'index']);
+    Route::get('/user/blog', [AdminController::class, 'user']);
 });
 
 
