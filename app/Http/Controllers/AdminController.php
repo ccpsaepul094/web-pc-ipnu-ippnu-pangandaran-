@@ -12,8 +12,4 @@ class AdminController extends Controller
         return view('admin.admin');
     }
 
-    public function user()
-    {
-        return view('user.dashboarduser');
-    }
 }
