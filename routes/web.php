@@ -12,13 +12,14 @@ Route::get('/', [CompanyController::class, "index"])->name('company.home');
 Route::get('/history', [CompanyController::class, "history"])->name('company.history');
 
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+Route::post('/beritas', [BeritaController::class, 'store'])->name('berita.store');
 
-// route untuk admin 
+// route untuk admin
 Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
 });
 
-// route untuk user 
+// route untuk user
 Route::middleware(['role:user'])->group(function () {
     Route::get('/user/blog', [BeritaController::class, 'index']);
 });

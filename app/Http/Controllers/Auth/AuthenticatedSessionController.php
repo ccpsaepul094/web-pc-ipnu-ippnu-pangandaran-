@@ -19,14 +19,18 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
-    /**
+        /**
      * Handle an incoming authentication request.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
         $request->session()->regenerate();
 
+     
         $user = $request->user();
 
         if ($user->hasRole('admin')) {
@@ -37,12 +41,15 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended('/user/blog');
         }
 
-        return redirect()->intended('/'); // fallback
+        return redirect()->intended('/');
     }
 
 
     /**
      * Destroy an authenticated session.
+     *
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function destroy(Request $request): RedirectResponse
     {
