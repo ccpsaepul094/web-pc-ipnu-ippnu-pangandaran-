@@ -6,19 +6,25 @@ use App\Models\Berita;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class BeritaController extends Controller
 {
+    // menampilkan data berita di halaman company
     public function index()
     {
-        $beritas = Berita::all();
+        $beritas = Berita::where('user_id', auth()->id())
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
         $totalberita = $beritas->count();
         $kategoris = Kategori::all();
 
-        return view('user.dashboarduser', compact('beritas', 'totalberita','kategoris'));
+        return view('user.dashboarduser', compact('beritas', 'totalberita', 'kategoris'));
     }
 
+    //tambah data berita
     public function store(Request $request)
     {
         // Validasi input
@@ -41,14 +47,35 @@ class BeritaController extends Controller
         // Upload gambar jika ada
         if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');
-            $filename = time() . '_' . $file->getClientOriginalName();
+            $filename = $file->hashName();
             $file->storeAs('public/beritas', $filename);
             $validated['gambar'] = $filename;
         }
+
+        // ➕ Tambahkan user_id otomatis
+        $validated['user_id'] = auth()->id();
 
         // Simpan ke database
         Berita::create($validated);
 
         return redirect()->route('berita.index')->with('success', 'Artikel berhasil ditambahkan!');
+    }
+
+    //tampilakn form edit berita
+    
+    //update perubahan
+
+    public function destroy($id)
+    {
+        $berita = Berita::findOrFail($id);
+
+        // Hapus gambar juga jika ada
+        if ($berita->gambar && file_exists(storage_path("app/public/beritas/" . $berita->gambar))) {
+            unlink(storage_path("app/public/beritas/" . $berita->gambar));
+        }
+
+        $berita->delete();
+
+        return redirect()->route('berita.index')->with('success', 'Artikel berhasil dihapus!');
     }
 }

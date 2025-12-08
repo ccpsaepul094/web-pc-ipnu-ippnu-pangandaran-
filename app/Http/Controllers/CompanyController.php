@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
     public function index()
     {
-        return view('company.home');
+        $beritas = Berita::where('status', 'published')->orderBy('created_at', 'desc')->paginate(6);
+        return view('company.home', compact('beritas'));
     }
 
     public function history()

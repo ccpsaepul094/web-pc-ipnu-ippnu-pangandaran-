@@ -3,46 +3,13 @@
 @section('content')
     <div class=" sm:ml-64">
         <div class="p-4 rounded-lg mt-14">
-            <div class="grid grid-cols-2 gap-4 mb-4">
-                <div class="flex items-center justify-center h-24 rounded-sm bg-green-500">
-                    <p class="text-3xl text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-9">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                        </svg>
-                    </p>
-                    <div class="text-white px-2">
-                        <p>Semua Artikel</p>
-                        <p>{{ $totalberita }}</p>
-                    </div>
-                </div>
-
-                <div class="flex items-center justify-center h-24 rounded-sm bg-green-500">
-                    <p class="text-3xl text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-9">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                        </svg>
-                    </p>
-                    <div class="text-white px-2">
-                        <p>Belum Disetujui</p>
-                        <p>50</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pastikan di layout utama sudah ada -->
-            <!-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script> -->
 
             <div x-data="{ open: false }"> <!-- ✅ Bungkus semua konten di dalam x-data -->
 
-                <!-- Header + Tombol Tambah -->
-                <div class="flex items-center justify-between py-3">
-                    <h3 class="text-lg font-semibold">Data Artikel</h3>
+                <header class=" p-5 flex justify-between items-center">
+                    <h1 class="text-2xl font-bold text-gray-800">Dashboard Jurnalis</h1>
                     <div @click="open = true"
-                        class="p-2 bg-green-500 rounded-lg text-white flex items-center gap-1 cursor-pointer hover:bg-green-600 transition">
+                        class="p-2 bg-blue-500 rounded-lg text-white flex items-center gap-1 cursor-pointer hover:bg-blue-600 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -50,51 +17,105 @@
                         </svg>
                         <span>Tambah Artikel</span>
                     </div>
+                </header>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white p-5 rounded-xl shadow text-center">
+                        <p class="text-gray-500 text-sm">Total Artikel</p>
+                        <h2 class="text-3xl font-bold text-gray-700 mt-1">{{ $totalberita }}</h2>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow text-center">
+                        <p class="text-gray-500 text-sm">Artikel Terbit</p>
+                        <h2 class="text-3xl font-bold text-green-600 mt-1">85</h2>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow text-center">
+                        <p class="text-gray-500 text-sm">Menunggu Review</p>
+                        <h2 class="text-3xl font-bold text-yellow-600 mt-1">25</h2>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow text-center">
+                        <p class="text-gray-500 text-sm">Total Pembaca</p>
+                        <h2 class="text-3xl font-bold text-blue-600 mt-1">34.520</h2>
+                    </div>
                 </div>
 
-                <!-- Tabel Data -->
-                <div class="rounded-lg overflow-hidden border border-gray-300 shadow-md">
-                    <table class="table-auto w-full text-sm">
+                <!-- Artikel Terbaru -->
+                <section class="bg-white mt-10 p-6 rounded-xl shadow">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">Artikel Terbaru</h2>
+                    <table class="w-full table-auto text-left text-gray-700">
                         <thead>
-                            <tr class="bg-gray-200">
-                                <th class="border px-4 py-2">ID</th>
-                                <th class="border px-4 py-2">Judul</th>
-                                <th class="border px-4 py-2">Slug</th>
-                                <th class="border px-4 py-2">Penulis</th>
-                                <th class="border px-4 py-2">Tanggal</th>
-                                <th class="border px-4 py-2">Status</th>
-                                <th class="border px-4 py-2">Aksi</th>
+                            <tr class="border-b text-sm text-gray-500">
+                                <th>no</th>
+                                <th class="py-2">Judul</th>
+                                <th class="py-2">Status</th>
+                                <th class="py-2">Tanggal</th>
+                                <th class="py-2 text-right">Pembaca</th>
+                                <th class="px-5 text-center">Tanggal</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($beritas as $berita)
-                                <tr>
-                                    <td class="border px-4 py-2">{{ $berita->id }}</td>
-                                    <td class="border px-4 py-2">{{ $berita->judul }}</td>
-                                    <td class="border px-4 py-2">{{ $berita->slug }}</td>
-                                    <td class="border px-4 py-2">{{ $berita->penulis }}</td>
-                                    <td class="border px-4 py-2">{{ $berita->tanggal }}</td>
-                                    <td class="border px-4 py-2">{{ $berita->status }}</td>
-                                    <td class="px-4 py-2">
-                                        <a href="#"
-                                            class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded">Edit</a>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td class="py-3">{{ $berita->judul }}</td>
+                                    <td>
+                                        <span
+                                            class="
+                                                        text-sm px-2 py-1 rounded
+                                                        {{ $berita->status == 'published' ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-700' }}
+                                                    ">
+                                            {{ $berita->status }}
+                                        </span>
+                                    </td>
 
-                                        <form action="#" method="POST" style="display:inline;">
+                                    <td>3 {{ $berita->tanggal }}</td>
+                                    <td class="text-right">2.310</td>
+                                    <td class="px-4 py-2 text-center flex items-center justify-center gap-3">
+
+                                        @if ($berita->status == 'draft')
+                                            <a onclick="openEditForm({{ $berita->id }})"
+                                                class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded flex items-center justify-center w-10 h-10 cursor-pointer">
+                                                <svg ...></svg>
+                                            </a>
+                                        @endif
+                                        <!-- Tombol Edit (ICON SAJA) -->
+
+                                        <!-- Tombol Hapus -->
+                                        <form action="{{ route('berita.destroy', $berita->id) }}" method="POST"
+                                            class="inline-block">
                                             @csrf
                                             @method('DELETE')
+
                                             <button type="submit" onclick="return confirm('Yakin mau hapus?')"
-                                                class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
-                                                Hapus
+                                                class="bg-red-500 hover:bg-red-600 text-white p-2 rounded flex items-center gap-2">
+
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"
+                                                    viewBox="0 0 640 640">
+                                                    <path fill="white"
+                                                        d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z" />
+                                                </svg>
+
                                             </button>
                                         </form>
+
                                     </td>
                                 </tr>
                             @endforeach
+
                         </tbody>
                     </table>
-                </div>
 
-                <!-- Modal Tambah Artikel -->
+                    <div class="mt-4 ">
+                        {{ $beritas->links('vendor.pagination.tailwind') }}
+                    </div>
+
+                    <div
+                        class="mt-4 bg-yellow-50 border border-yellow-200 p-3 rounded-lg text-yellow-800 text-sm flex items-center gap-2">
+                        <span>🔔</span>
+                        <span>Artikel yang sedang direview redaksi</span>
+                    </div>
+                </section>
+
+               `` <!-- Modal Tambah Artikel -->
                 <div x-show="open" style="display: none;"
                     class="fixed inset-0 flex items-center justify-center bg-black/50 z-50 p-4" x-transition>
                     <div @click.away="open = false"
@@ -165,12 +186,100 @@
                         </form>
                     </div>
                 </div>
-
-
             </div> <!-- ✅ Tutup x-data -->
+        </div>
+    </div>
+
+    <div id="editFormModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-3xl max-h-[90vh] overflow-auto">
+
+            <h2 class="text-xl font-semibold mb-4">Edit Artikel</h2>
+
+            <form id="editForm" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- Kiri -->
+                    <div class="space-y-3">
+                        <div>
+                            <label>Judul</label>
+                            <input type="text" id="edit_judul" name="judul" class="w-full border rounded p-2">
+                        </div>
+
+                        <div>
+                            <label>Slug</label>
+                            <input type="text" id="edit_slug" name="slug" class="w-full border rounded p-2">
+                        </div>
+
+                        <div>
+                            <label>Isi Artikel</label>
+                            <textarea id="edit_isi" name="isi" rows="6" class="w-full border rounded p-2"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Kanan -->
+                    <div class="space-y-3">
+                        <div>
+                            <label>Kategori</label>
+                            <select name="kategori_id" id="edit_kategori_id" class="w-full border rounded p-2">
+                                <option value="">-- Pilih Kategori --</option>
+                                @foreach ($kategoris as $kategori)
+                                    <option value="{{ $kategori->id }}">{{ $kategori->kategori }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div>
+                            <label>Penulis</label>
+                            <input type="text" id="edit_penulis" name="penulis" class="w-full border rounded p-2">
+                        </div>
+
+                        <div>
+                            <label>Gambar Baru (opsional)</label>
+                            <input type="file" name="gambar" class="w-full border rounded p-2">
+                        </div>
+
+                        <div>
+                            <label>Tanggal</label>
+                            <input type="date" id="edit_tanggal" name="tanggal" class="w-full border rounded p-2">
+                        </div>
+
+                        <div>
+                            <label>Status</label>
+                            <select name="status" id="edit_status" class="w-full border rounded p-2">
+                                <option value="draft">Draft</option>
+                                <option value="published">Published</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Tombol -->
+                <div class="flex justify-end gap-2 mt-4">
+                    <button type="button" onclick="closeEditForm()" class="px-4 py-2 bg-gray-300 rounded">Batal</button>
+
+                    <button type="submit"
+                        class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Update</button>
+                </div>
+
+            </form>
 
         </div>
     </div>
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: 'Berhasil!',
+                text: "{{ session('success') }}",
+                icon: 'success',
+                confirmButtonText: 'OK'
+            })
+        </script>
+    @endif
 
     <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
 
@@ -182,93 +291,25 @@
                     console.error(error);
                 });
         });
-    </script>
 
-    {{-- <div class="grid grid-cols-2 gap-4 mb-4">
-                <div class="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 1v16M1 9h16" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 1v16M1 9h16" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 1v16M1 9h16" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 1v16M1 9h16" />
-                        </svg>
-                    </p>
-                </div>
-            </div>
-            <div class="flex items-center justify-center h-48 mb-4 rounded-sm bg-gray-50 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 1v16M1 9h16" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 1v16M1 9h16" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 1v16M1 9h16" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 1v16M1 9h16" />
-                        </svg>
-                    </p>
-                </div>
-            </div> --}}
-    </div>
-    </div>
+        function openEditForm(id, judul, slug, isi) {
+            document.getElementById('editFormModal').classList.remove('hidden');
+            document.getElementById('editFormModal').classList.add('flex');
+
+            // Set action form
+            document.getElementById('editForm').action = "/berita/" + id;
+
+            // Isi field
+            document.getElementById('edit_judul').value = judul;
+            document.getElementById('edit_slug').value = slug;
+            document.getElementById('edit_isi').value = isi;
+
+            // Field lain bisa ditambahkan jika perlu
+        }
+
+        function closeEditForm() {
+            document.getElementById('editFormModal').classList.add('hidden');
+            document.getElementById('editFormModal').classList.remove('flex');
+        }
+    </script>
 @endsection

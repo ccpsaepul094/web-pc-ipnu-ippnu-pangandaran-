@@ -43,6 +43,7 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
+            <a href="{{ route('register') }}">regiter</a>
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     href="{{ route('password.request') }}">
@@ -56,4 +57,34 @@
 
         </div>
     </form>
+
+    ...
+    </form>
+
+    @if (session('success'))
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '{{ session('success') }}',
+                timer: 3000,
+                showConfirmButton: false
+            });
+        </script>
+    @endif
+
+    @if (session('throttle_popup'))
+        <div id="popup" class="fixed top-5 right-5 bg-red-500 text-white px-4 py-2 rounded shadow-lg">
+            {{ session('throttle_popup') }}
+        </div>
+
+        <script>
+            setTimeout(() => {
+                document.getElementById('popup').style.display = 'none';
+            }, 3000);
+        </script>
+    @endif
+
+
 </x-guest-layout>

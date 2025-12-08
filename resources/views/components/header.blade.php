@@ -6,7 +6,7 @@
         <!-- Logo -->
         <div class="flex items-center space-x-3">
             {{-- <img src="assets/image/ipnuippnu.png" alt="" class="h-10 w-10"> --}}
-            <h1 class="text-xl font-bold text-black">pc ipnu ippnu pangandaran</h1>
+            <h1 class="text-xl font-bold text-black">Pelajarnupangandaran</h1>
         </div>
 
         <!-- Menu besar (desktop) -->

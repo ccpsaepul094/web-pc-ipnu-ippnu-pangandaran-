@@ -13,6 +13,10 @@ Route::get('/history', [CompanyController::class, "history"])->name('company.his
 
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
 Route::post('/beritas', [BeritaController::class, 'store'])->name('berita.store');
+Route::get('/beritas/edit', [BeritaController::class, 'edit'])->name('berita.edit');
+
+Route::delete('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+
 
 // route untuk admin
 Route::middleware(['role:admin'])->group(function () {

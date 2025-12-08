@@ -33,24 +33,28 @@
             </div>
         </div>
         <hr class="my-6 border-gray-300 sm:mx-auto lg:my-8" />
-        <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm text-black sm:text-center">
+        <div class="flex flex-col items-center text-center sm:flex-row sm:justify-between">
+            <span class="text-sm text-black">
                 © 2023 Pelajar NU Pangandaran. All Rights Reserved.
             </span>
-            <div class="flex mt-4 sm:justify-center sm:mt-0">
+
+            <div class="flex mt-4 sm:mt-0 sm:justify-center">
                 <!-- Facebook -->
-                <a href="#" class="text-green-600 hover:text-green-800 ">
+                <a href="#" class="text-green-600 hover:text-green-800">
                     <i class="fa-brands fa-facebook fa-lg"></i>
                 </a>
-                {{-- instagra --}}
+
+                <!-- Instagram -->
                 <a href="#" class="text-green-600 hover:text-green-800 mx-2">
                     <i class="fa-brands fa-instagram fa-lg"></i>
                 </a>
-                {{-- youtube --}}
-                <a href="#" class="text-green-600 hover:text-green-800 ">
+
+                <!-- YouTube -->
+                <a href="#" class="text-green-600 hover:text-green-800">
                     <i class="fa-brands fa-youtube fa-lg"></i>
                 </a>
             </div>
         </div>
+
     </div>
 </footer>

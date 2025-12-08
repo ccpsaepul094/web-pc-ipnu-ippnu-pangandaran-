@@ -16,5 +16,6 @@ class Berita extends Model
         'gambar',
         'tanggal',
         'status',
+        'user_id'
     ];
 }

@@ -107,32 +107,29 @@
 
             <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 <!-- Card 1 -->
-                <div class="bg-green-50 rounded-2xl shadow-md p-2 hover:shadow-lg transition">
-                    <img src="assets/image/artikel.jpg" alt="Thumbnail" class="rounded-xl mb-4">
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">Judul Artikel Pertama</h3>
-                    <p class="text-sm text-gray-600 mb-4">Ringkasan singkat artikel supaya pengunjung tertarik membaca
-                        lebih
-                        lanjut.</p>
-                    <a href="#" class="text-green-700 font-semibold hover:underline">Baca Selengkapnya →</a>
-                </div>
+                @foreach ($beritas as $berita)
+                    <div class="bg-green-50 rounded-lg shadow-md hover:shadow-lg transition overflow-hidden">
+                        <div>
+                            <img src="{{ asset('storage/beritas/' . $berita->gambar) }}" alt="Thumbnail"
+                                class="w-full h-48 object-cover">
+                        </div>
+                        <div class="p-3">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">{{ $berita->judul }}</h3>
+                            <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+                                {!! str_replace(['<p>', '</p>'], '', $berita->isi) !!}
+                            </p>
 
-                <div class="bg-green-50 rounded-2xl shadow-md p-2 hover:shadow-lg transition">
-                    <img src="assets/image/artikel.jpg" alt="Thumbnail" class="rounded-xl mb-4">
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">Judul Artikel Pertama</h3>
-                    <p class="text-sm text-gray-600 mb-4">Ringkasan singkat artikel supaya pengunjung tertarik membaca
-                        lebih
-                        lanjut.</p>
-                    <a href="#" class="text-green-700 font-semibold hover:underline">Baca Selengkapnya →</a>
-                </div>
-                <div class="bg-green-50 rounded-2xl shadow-md p-2 hover:shadow-lg transition">
-                    <img src="assets/image/artikel.jpg" alt="Thumbnail" class="rounded-xl mb-4">
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">Judul Artikel Pertama</h3>
-                    <p class="text-sm text-gray-600 mb-4">Ringkasan singkat artikel supaya pengunjung tertarik membaca
-                        lebih
-                        lanjut.</p>
-                    <a href="#" class="text-green-700 font-semibold hover:underline">Baca Selengkapnya →</a>
-                </div>
+                            <a href="#" class="text-green-700 font-semibold hover:underline">Baca Selengkapnya
+                                →</a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
+            <div class="mt-4 ">
+                {{ $beritas->links('vendor.pagination.tailwind') }}
+            </div>
+
+
         </div>
     </section>
 
