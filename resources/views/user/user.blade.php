@@ -131,7 +131,7 @@
         </div>
     </aside>
 
-    <main>
+    <main class="w-full">
         @yield('content')
     </main>
 

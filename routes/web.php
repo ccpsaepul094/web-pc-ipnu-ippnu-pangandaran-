@@ -11,12 +11,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [CompanyController::class, "index"])->name('company.home');
 Route::get('/history', [CompanyController::class, "history"])->name('company.history');
 
+//ini perberitaan
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+//tambah berita
 Route::post('/beritas', [BeritaController::class, 'store'])->name('berita.store');
-Route::get('/beritas/edit', [BeritaController::class, 'edit'])->name('berita.edit');
-
+// edit
+Route::put('/berita/update/{id}', [BeritaController::class, 'update'])->name('berita.update');
+//hapus
 Route::delete('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
-
+//lihat berita
+Route::get('/berita/{slug}', [BeritaController::class, 'show'])
+    ->name('berita.show');
 
 // route untuk admin
 Route::middleware(['role:admin'])->group(function () {

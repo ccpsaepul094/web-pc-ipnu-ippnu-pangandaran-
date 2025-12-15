@@ -119,8 +119,11 @@
                                 {!! str_replace(['<p>', '</p>'], '', $berita->isi) !!}
                             </p>
 
-                            <a href="#" class="text-green-700 font-semibold hover:underline">Baca Selengkapnya
-                                →</a>
+                            <a href="{{ route('berita.show', $berita->slug) }}"
+                                class="text-green-700 font-semibold hover:underline">
+                                Baca Selengkapnya →
+                            </a>
+
                         </div>
                     </div>
                 @endforeach

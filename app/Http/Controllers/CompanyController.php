@@ -2,14 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Berita;
 use Illuminate\Http\Request;
+use Jenssegers\Agent\Agent;
+use App\Models\Berita;
 
 class CompanyController extends Controller
 {
     public function index()
     {
-        $beritas = Berita::where('status', 'published')->orderBy('created_at', 'desc')->paginate(6);
+        $agent = new Agent();
+
+        // Mobile = 3, Desktop = 6
+        $perPage = $agent->isMobile() ? 3 : 6;
+
+        $beritas = Berita::where('status', 'published')
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPage);
+
         return view('company.home', compact('beritas'));
     }
 
