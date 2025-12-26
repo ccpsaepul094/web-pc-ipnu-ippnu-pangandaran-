@@ -58,10 +58,17 @@ class BeritaController extends Controller
 
         // Upload gambar jika ada
         if ($request->hasFile('gambar')) {
-            $file = $request->file('gambar');
-            $filename = $file->hashName();
-            $file->storeAs('public/beritas', $filename);
-            $validated['gambar'] = $filename;
+
+            // 1️⃣ hapus gambar lama (KHUSUS UPDATE)
+            if (!empty($berita->gambar) && Storage::disk('public')->exists('beritas/' . $berita->gambar)) {
+                Storage::disk('public')->delete('beritas/' . $berita->gambar);
+            }
+
+            // 2️⃣ simpan gambar baru
+            $path = $request->file('gambar')->store('beritas', 'public');
+
+            // 3️⃣ simpan nama file ke DB
+            $validated['gambar'] = basename($path);
         }
 
         // ➕ Tambahkan user_id otomatis

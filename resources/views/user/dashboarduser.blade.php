@@ -1,7 +1,7 @@
 @extends('user.user')
 
 @section('content')
-    <div class="md:ml-64">
+    <div class="">
         <div class="p-4 rounded-lg mt-14">
 
             <div x-data="{ open: false }">
