@@ -2,24 +2,56 @@
 
 @section('content')
     <div class="">
-        <div class="p-4 rounded-lg mt-14">
+        <div class="p-4  rounded-lg">
 
             <div x-data="{ open: false }">
 
                 <!-- Header -->
-                <header class="w-full p-5 flex justify-between items-center">
+                <header class="w-full pb-6 flex justify-between items-center">
                     <h1 class="text-sm md:text-xl font-bold text-gray-800">
                         Dashboard Jurnalis
                     </h1>
 
-                    <div @click="open = true"
-                        class="p-2 text-sm md:text-base bg-blue-500 rounded-lg text-white flex items-center gap-1 cursor-pointer hover:bg-blue-600 transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-5 md:size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                        <span>Tambah Artikel</span>
+                    <div class="flex items-center">
+                        <div class="flex items-center ms-3 relative">
+                            <div>
+                                <button type="button"
+                                    class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                                    aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                                    <span class="sr-only">Open user menu</span>
+                                    <img class="w-8 h-8 rounded-full"
+                                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                        alt="user photo">
+                                </button>
+                            </div>
+                            <div class="absolute right-0 top-full mt-2 z-50 hidden w-48 text-base list-none bg-white divide-y divide-gray-100 rounded-sm shadow-sm dark:bg-gray-700 dark:divide-gray-600"
+                                id="dropdown-user">
+                                <div class="px-4 py-3" role="none">
+                                    <p class="text-sm text-gray-900 dark:text-white" role="none">
+                                        {{ Auth::user()->name }}
+                                    </p>
+                                    <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                                        {{ Auth::user()->email }}
+                                    </p>
+                                </div>
+                                <ul class="py-1" role="none">
+                                    <li>
+                                        <!-- Link logout -->
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            role="menuitem">
+                                            Sign out
+                                        </a>
+
+                                        <!-- Form tersembunyi -->
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </header>
 
@@ -52,9 +84,23 @@
 
                 <!-- Artikel Table -->
                 <section class="bg-white mt-5 p-6 rounded-xl shadow">
-                    <h2 class="text-sm md:text-lg font-semibold text-gray-800 mb-4">
-                        Artikel Terbaru
-                    </h2>
+
+                    <div class="flex items-center justify-between py-2 ">
+                        <h2 class="text-sm md:text-lg font-semibold text-gray-800 mb-4">
+                            Artikel Terbaru
+                        </h2>
+
+                        <div @click="open = true"
+                            class="p-2 text-sm md:text-base bg-blue-500 rounded-lg text-white flex items-center gap-1 cursor-pointer hover:bg-blue-600 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-5 md:size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                            <span>Tambah Artikel</span>
+                        </div>
+                    </div>
+
 
                     <div class="overflow-x-auto">
                         <table class="w-full table-auto text-left text-gray-700 text-sm md:text-base">

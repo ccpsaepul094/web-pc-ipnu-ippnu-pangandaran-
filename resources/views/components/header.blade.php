@@ -5,7 +5,7 @@
         <div class="flex items-center space-x-3">
             {{-- Jika Anda memiliki logo, aktifkan baris di bawah: --}}
             {{-- <img src="assets/image/ipnuippnu.png" alt="Logo IPNU IPPNU" class="h-10 w-10"> --}}
-            <h1 class="text-xl font-extrabold text-gray-900">
+            <h1 class="text-xl font-bold text-gray-900">
                 Pelajar<span class="text-green-600">NU</span>Pangandaran
             </h1>
         </div>

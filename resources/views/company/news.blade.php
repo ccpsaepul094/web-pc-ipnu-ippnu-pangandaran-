@@ -1,10 +1,10 @@
 @extends('layouts.layouts')
 
 @section('content')
-    <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 md:px-0">
 
         <!-- Judul -->
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
             {{ $berita->judul }}
         </h1>
 

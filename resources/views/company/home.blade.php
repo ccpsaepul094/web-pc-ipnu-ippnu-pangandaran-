@@ -18,7 +18,7 @@
         </div>
 
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 relative z-10 items-center">
-            <div data-aos="fade-right" data-aos-delay="100" data-aos-duration="1500">
+            <div data-aos="fade-right"  data-aos-duration="1500">
                 <h3 class="text-5xl md:text-6xl font-extrabold mb-4 text-gray-900 leading-tight">
                     <span class="block text-green-600">Belajar Berjuang</span> Bertaqwa
                 </h3>
@@ -228,7 +228,7 @@
     </section>
 
 
-    <section id="tentang-kami" class="bg-gray-50 py-20 px-6">
+    <section id="kontak" class="bg-gray-50 py-20 px-6">
         <div class="max-w-6xl mx-auto">
 
             <!-- Judul -->

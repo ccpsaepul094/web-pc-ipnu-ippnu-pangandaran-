@@ -2,8 +2,8 @@
 
 @section('content')
     {{-- Section Sejarah --}}
-    <section class="bg-white py-16 px-4">
-        <article class="max-w-3xl mx-auto">
+    <section class="bg-white py-16 px-6">
+        <article class="max-w-4xl mx-auto">
             <!-- Judul -->
             <h1 class="text-3xl md:text-4xl font-bold  mb-6 leading-tight">
                 Sejarah Berdirinya PC IPNU IPPNU Pangandaran

@@ -22,9 +22,30 @@
 
     <link rel="icon" type="image/png" href="/assets/image/ipnuippnu.png" sizes="32x32">
     <style>
+        html,
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Mencegah AOS merusak layout mobile */
+        [data-aos] {
+            pointer-events: none;
+        }
+
+        .aos-animate {
+            pointer-events: auto;
+        }
+
+        /* Pastikan section benar-benar mengunci kontennya */
+        section {
+            width: 100%;
+            overflow-x: hidden;
         }
     </style>
 </head>
