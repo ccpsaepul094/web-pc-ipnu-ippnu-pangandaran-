@@ -14,6 +14,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
+
     public function create(): View
     {
         return view('auth.login');
@@ -30,7 +31,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
 
-     
+
         $user = $request->user();
 
         if ($user->hasRole('admin')) {
@@ -61,4 +62,6 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
+
 }

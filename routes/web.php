@@ -28,10 +28,20 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
 });
 
+
+
 // route untuk user
 Route::middleware(['role:user'])->group(function () {
     Route::get('/user/blog', [BeritaController::class, 'index']);
 });
+
+//menghapus user
+Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('users.destroy');
+//user managemet
+Route::get('/usermanagement', [AdminController::class, 'management'])->name('users.management');
+//kelola artikel
+Route::get('/articlemanagement', [AdminController::class, 'articlemanagement'])->name('article.management');
+
 
 
 Route::middleware('auth')->group(function () {

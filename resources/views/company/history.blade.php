@@ -14,7 +14,7 @@
                 Dipublikasikan pada <span class="font-medium">10 Oktober 1999</span>
             </div>
 
-            <!-- Isi Artikel -->
+            !-- Isi Artikel -->
             <div class="space-y-6 text-gray-700 leading-relaxed text-base md:text-lg">
                 <p>
                     Pimpinan Cabang Ikatan Pelajar Nahdlatul Ulama (PC IPNU) dan Pimpinan Cabang Ikatan Pelajar Putri
