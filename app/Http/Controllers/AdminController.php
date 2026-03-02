@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Berita;
 use App\Models\Kategori;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 

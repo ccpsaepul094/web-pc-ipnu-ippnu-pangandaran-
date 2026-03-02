@@ -7,25 +7,24 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+Route::middleware('guest')->group(function () {
+    Route::get('/', [CompanyController::class, "index"])->name('company.home');
+    Route::get('/history', [CompanyController::class, "history"])->name('company.history');
+     Route::get('/berita/{slug}', [BeritaController::class, 'show'])
+        ->name('berita.show');
+});
 
-Route::get('/', [CompanyController::class, "index"])->name('company.home');
-Route::get('/history', [CompanyController::class, "history"])->name('company.history');
 
 //ini perberitaan
-Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
-//tambah berita
-Route::post('/beritas', [BeritaController::class, 'store'])->name('berita.store');
-// edit
-Route::put('/berita/update/{id}', [BeritaController::class, 'update'])->name('berita.update');
-//hapus
-Route::delete('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
-//lihat berita
-Route::get('/berita/{slug}', [BeritaController::class, 'show'])
-    ->name('berita.show');
 
 // route untuk admin
 Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
+    Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('users.destroy');
+    //user managemet
+    Route::get('/usermanagement', [AdminController::class, 'management'])->name('users.management');
+    //kelola artikel
+    Route::get('/articlemanagement', [AdminController::class, 'articlemanagement'])->name('article.management');
 });
 
 
@@ -33,14 +32,20 @@ Route::middleware(['role:admin'])->group(function () {
 // route untuk user
 Route::middleware(['role:user'])->group(function () {
     Route::get('/user/blog', [BeritaController::class, 'index']);
+    Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+    //tambah berita
+    Route::post('/beritas', [BeritaController::class, 'store'])->name('berita.store');
+    // edit
+    Route::put('/berita/update/{id}', [BeritaController::class, 'update'])->name('berita.update');
+    //hapus
+    Route::delete('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+    //lihat berita
+
+
 });
 
 //menghapus user
-Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('users.destroy');
-//user managemet
-Route::get('/usermanagement', [AdminController::class, 'management'])->name('users.management');
-//kelola artikel
-Route::get('/articlemanagement', [AdminController::class, 'articlemanagement'])->name('article.management');
+
 
 
 

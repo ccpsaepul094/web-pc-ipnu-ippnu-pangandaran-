@@ -1,4 +1,4 @@
-@extends('user.user')
+@extends('user.user',['title' => 'user'])
 
 @section('content')
     <div class="">

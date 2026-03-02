@@ -1,6 +1,7 @@
 @extends('layouts.layouts')
 
 @section('content')
+    {{-- LEANDING PAGE --}}
     <section id="home"
         class="min-h-screen bg-gray-50 px-6 md:px-16 flex flex-col items-center justify-center relative overflow-hidden">
         {{-- pt-20 dihapus karena padding sudah ada di body --}}
@@ -42,6 +43,7 @@
         </div>
     </section>
 
+    {{-- VISION $ MISION  --}}
     <section id="visi"
         class="bg-white min-h-screen flex flex-col py-20 px-6 items-center justify-center relative overflow-hidden z-10">
 
@@ -111,6 +113,7 @@
         </div>
     </section>
 
+    {{-- ABOUTS ME --}}
     <section id="tentangKami"
         class="min-h-screen py-20 px-6 bg-gray-50 flex flex-col justify-center relative overflow-hidden z-10">
 
@@ -187,6 +190,7 @@
         </div>
     </section>
 
+    {{-- ARTICLE --}}
     <section id="blog" class="min-h-screen py-20 px-6 bg-white items-center justify-center">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-900" data-aos="fade-down" data-aos-delay="100"
@@ -227,7 +231,7 @@
         </div>
     </section>
 
-
+    {{-- CONTAC US --}}
     <section id="kontak" class="bg-gray-50 py-20 px-6">
         <div class="max-w-6xl mx-auto">
 

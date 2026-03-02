@@ -1,4 +1,4 @@
-@extends('admin.admin')
+@extends('admin.admin',['title'=>'kelola artikel'])
 
 @section('content')
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"></div>

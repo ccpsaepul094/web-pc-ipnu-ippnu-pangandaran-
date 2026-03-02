@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <title>Admin</title>
+    <title>{{ $title ?? '' }}  | {{ config('app.name') }}</title>
 </head>
 
 <body>
