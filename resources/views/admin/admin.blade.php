@@ -6,8 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <title>{{ $title ?? '' }}  | {{ config('app.name') }}</title>
+    <title>{{ $title ?? '' }} | {{ config('app.name') }}</title>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body>
@@ -120,53 +128,93 @@
                 </li>
             </ul>
         </div>
-
-        <div class="p-4 border-t border-gray-200 bg-gray-50 rounded-lg">
-            <div class="flex items-center mb-4 px-2">
-                <div class="flex-grow">
-                    <p class="text-sm font-bold text-gray-900 truncate uppercase">{{ Auth::user()->name }}</p>
-                    <p class="text-xs text-gray-500 truncate">{{ Auth::user()->email }}</p>
-                </div>
-            </div>
-
-            <a href="{{ route('logout') }}"
-                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                class="flex items-center p-2 text-red-600 rounded-lg hover:bg-red-50 group font-bold">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
-                </svg>
-                <span class="ms-3 italic">Sign Out</span>
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                @csrf
-            </form>
-        </div>
     </aside>
 
     <div class="px-4 py-6 sm:ml-64">
         <div class="">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-                <div>
-                    <h1 class="text-2xl pb-2 font-bold text-gray-800">Selat Datang Di Dashboard Admin </h1>
-                    <p class="text-gray-500 text-sm">Kelola akses admin dan kontributor web PC IPNU.</p>
-                </div>
-            </div>
+            <header class="w-full pb-6 flex justify-between items-center">
+                <h1 class="text-sm md:text-xl font-bold text-gray-800">
+                    Dashboard admin
+                </h1>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-                    <p class="text-gray-500 text-sm font-medium uppercase">Total User</p>
-                    <p class="text-3xl font-bold text-gray-800">{{ $totalUser }}</p>
+                <div class="flex items-center">
+                    <div class="flex items-center ms-3 relative">
+                        <div>
+                            <button type="button"
+                                class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                                aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="w-8 h-8 rounded-full"
+                                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                    alt="user photo">
+                            </button>
+                        </div>
+                        <div class="absolute right-0 top-full mt-2 z-50 hidden w-48 text-base list-none bg-white divide-y divide-gray-100 rounded-sm shadow-sm dark:bg-gray-700 dark:divide-gray-600"
+                            id="dropdown-user">
+                            <div class="px-4 py-3" role="none">
+                                <p class="text-sm text-gray-900 dark:text-white" role="none">
+                                    {{ Auth::user()->name }}
+                                </p>
+                                <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                                    {{ Auth::user()->email }}
+                                </p>
+                            </div>
+                            <ul class="py-1" role="none">
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">
+
+                                        <span class="ms-3">Dashboard</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('users.management') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">
+
+                                        <span class="ms-3">Kelola User</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('article.management') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">
+
+                                        <span class="ms-3">Kelola Artikel</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <!-- Link logout -->
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        role="menuitem">
+                                        Sign out
+                                    </a>
+
+                                    <!-- Form tersembunyi -->
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-                    <p class="text-gray-500 text-sm font-medium uppercase">Administrator</p>
-                    <p class="text-3xl font-bold text-blue-600">{{ $totalAdmin }}</p>
+            </header>
+
+            <div class="py-4 flex gap-4 w-full">
+                <div class="flex-1 min-w-0 bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                    <p class="text-gray-500 text-xs font-medium uppercase truncate">Total User</p>
+                    <p class="text-2xl font-bold text-gray-800 truncate">{{ $totalUser }}</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-                    <p class="text-gray-500 text-sm font-medium uppercase">Kontributor</p>
-                    <p class="text-3xl font-bold text-orange-500">{{ $totalContributor }}</p>
+
+                <div class="flex-1 min-w-0 bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                    <p class="text-gray-500 text-xs font-medium uppercase truncate">Administrator</p>
+                    <p class="text-2xl font-bold text-blue-600 truncate">{{ $totalAdmin }}</p>
+                </div>
+
+                <div class="flex-1 min-w-0 bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                    <p class="text-gray-500 text-xs font-medium uppercase truncate">Kontributor</p>
+                    <p class="text-2xl font-bold text-orange-500 truncate">{{ $totalContributor }}</p>
                 </div>
             </div>
         </div>
